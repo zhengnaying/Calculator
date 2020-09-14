@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="b0">0</string>
+    <string name="b1">1</string>
+    <string name="b2">2</string>
+    <string name="b3">3</string>
+    <string name="b4">4</string>
+    <string name="b5">5</string>
+    <string name="b6">6</string>
+    <string name="b7">7</string>
+    <string name="b8">8</string>
+    <string name="b9">9</string>
+
+    <string name="b_sub">-</string>
+    <string name="b_add">+</string>
+    <string name="b_div">÷</string>
+    <string name="b_mul">×</string>
+    <string name="b_sin">sin</string>
+    <string name="b_cos">cos</string>
+    <string name="b_tan">tan</string>
+    <string name="b_C">C</string>
+    <string name="b_per">%</string>
+    <string name="b_equals">=</string>
+    <string name="b_point">.</string>
+    <string name="b_DEL">DEL</string>
+    <string name="b_square">x^2</string>
+    <string name="b_cube">x^3</string>
+    <string name="b_ln">ln</string>
+    <string name="b_lg">log</string>
+    <string name="b_sqrt">√x</string>
+    <string name="b_left">(</string>
+    <string name="b_right">)</string>
+    <string name="b_factory">x!</string>
+    <string name="b_dao">1/x</string>
+    <string name="b_cm">cm</string>
+    <string name="b_m">m</string>
+    <string name="b_g">g</string>
+    <string name="b_kg">kg</string>
+    <string name="b_help">Help</string>
+    <string name="b_bin">bin</string>
+    <string name="b_oct">oct</string>
+    <string name="b_hex">hex</string>
+    <string name="b_dec">dec</string>
+
+    <string name="TestView_name">请输入</string>
+
+</resources>
