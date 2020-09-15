@@ -38,14 +38,14 @@
     <string name="b_dao">1/x</string>
     <string name="b_cm">cm</string>
     <string name="b_m">m</string>
-    <string name="b_g">g</string>
-    <string name="b_kg">kg</string>
+    <string name="b_cm2">cm2</string>
+    <string name="b_m2">m2</string>
     <string name="b_help">Help</string>
     <string name="b_bin">bin</string>
     <string name="b_oct">oct</string>
     <string name="b_hex">hex</string>
     <string name="b_dec">dec</string>
 
-    <string name="TestView_name">请输入</string>
+    <string name="TestView_name">0</string>
 
 </resources>
