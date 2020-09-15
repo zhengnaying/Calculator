@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.DeadObjectException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;
     private Button add, sub, div, mul, reset, cancel, percent, point, calculate;
-    private Button square, cube, cm,m,cm2, m2, sin, cos, tan, log, ln, help, factorial, hex,dao,bin,dec,oct,left,right,sqrt;
+    private Button square, cube, cm,cm3, sin, cos, tan, log, ln, help, factorial, hex,dao,bin,dec,oct,left,right,sqrt,s;
 
     private String str = "0";
     private boolean clear_flag = false;
@@ -29,13 +28,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //获取屏幕方向
         int orientation=getResources().getConfiguration().orientation;
         Log.d("--------",""+orientation);
-        int mCurrentorientation = getResources().getConfiguration().orientation;
-        if(mCurrentorientation == Configuration.ORIENTATION_PORTRAIT){
+        int mCurrentOrientation = getResources().getConfiguration().orientation;
+        if(mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT){
             Log.i("INFO","portrait"); //竖屏
             initView_por();   //竖屏初始化
             initEvent_por();
         }
-        if(mCurrentorientation == Configuration.ORIENTATION_LANDSCAPE){
+        else if(mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE){
             Log.i("INFO","landscape");
             initView_por();
             initView_land();
@@ -70,14 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cos = (Button) findViewById(R.id.b_cos);
         tan = (Button) findViewById(R.id.b_tan);
         cm = (Button) findViewById(R.id.b_cm);
-        m = (Button) findViewById(R.id.b_m);
-        cm2 = (Button) findViewById(R.id.b_cm2);
-        m2 = (Button) findViewById(R.id.b_m2);
+        cm3 = (Button) findViewById(R.id.b_cm3);
         help = (Button) findViewById(R.id.b_help);
-        oct = (Button) findViewById(R.id.b_oct);
-        bin = (Button) findViewById(R.id.b_bin);
-        dec = (Button) findViewById(R.id.b_dec);
-        hex = (Button) findViewById(R.id.b_hex);
+        s = (Button) findViewById(R.id.b_switch);
 
         text = (TextView) findViewById(R.id.t1);
 
@@ -96,15 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sin.setOnClickListener(this);
         cos.setOnClickListener(this);
         tan.setOnClickListener(this);
-        oct.setOnClickListener(this);
-        bin.setOnClickListener(this);
-        dec.setOnClickListener(this);
-        hex.setOnClickListener(this);
+        s.setOnClickListener(this);
         help.setOnClickListener(this);
         cm.setOnClickListener(this);
-        cm2.setOnClickListener(this);
-        m.setOnClickListener(this);
-        m2.setOnClickListener(this);
+        cm3.setOnClickListener(this);
     }
 
     //竖屏初始化组件
@@ -287,13 +276,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_left:
             case R.id.b_right:
             case R.id.b_cm:
-            case R.id.b_cm2:
-            case R.id.b_m:
-            case R.id.b_m2:
-            case R.id.b_hex:
-            case R.id.b_bin:
-            case R.id.b_oct:
-            case R.id.b_dec:
+            case R.id.b_cm3:
+            case R.id.b_switch:
             case R.id.b_factory:
                 if (clear_flag){
                     clear_flag = false;
@@ -366,7 +350,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  int R = (int) r;
                  String string = R + "";
                  text.setText(string);
-             } else {
+             } else if(n1%n2==0) {
+                 int R = (int) r;
+                 String string = R + "";
+                 text.setText(string);
+             }
+             else {
                  String string = r + "";
                  text.setText(string);
              }
