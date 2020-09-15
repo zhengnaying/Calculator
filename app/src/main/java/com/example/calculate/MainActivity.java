@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -43,7 +44,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     //横屏初始化组件
     private void initView_land() {
@@ -217,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result="error!";
                     return;
                 }
+                text.setText(result);
                 break;
              /*
              等号
@@ -261,10 +272,149 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = Double.toString(Math.sqrt(t));
                 }
                 else result = "0";
+                if(clear_flag){
+                    clear_flag=false;
+                    str="";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
+            case R.id.b_sin:
+            case R.id.b_cos:
+            case R.id.b_tan:
+            case R.id.b_ln:
+            case R.id.b_lg:
+            case R.id.b_left:
+            case R.id.b_right:
+            case R.id.b_cm:
+            case R.id.b_cm2:
+            case R.id.b_m:
+            case R.id.b_m2:
+            case R.id.b_hex:
+            case R.id.b_bin:
+            case R.id.b_oct:
+            case R.id.b_dec:
+            case R.id.b_factory:
+                if (clear_flag){
+                    clear_flag = false;
+                    str="";
+                    text.setText(str);
+                }
+                str+= " "+((Button)v).getText()+" ";
+                text.setText(str);
+                break;
+             /*
+             倒数
+              */
+            case R.id.b_dao:
+                if(str.length()!=0){
+                    double t = 1/Double.parseDouble(str);
+                    t = (double) Math.round(t * 100) / 100;  //保留两位小数
+                    result = Double.toString(t);
+                }
+                else {
+                    result="error!";
+                }
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText("");
+                }
+                text.setText(result);
+                break;
         }
 
     }
 
     private void getResult() {
+        String num1,num2;
+        String op;
+
+        double n1,n2;
+        double r;
+        /*
+        若存在符号则进行运算，没有则直接返回；
+         */
+        if(str == null || str.equals(""))
+            return;
+        if(!str.contains(" "))
+            return;
+        clear_flag=true;
+
+        /*
+        加减乘除
+         */
+        if(str.contains("+")|| str.contains("-")||str.contains("×")||str.contains("÷")){
+            num1 = str.substring(0,str.indexOf(" "));
+            op = str.substring(str.indexOf(" ")+1,str.indexOf(" ")+2);
+            num2 = str.substring(str.indexOf(" ")+3);
+            //都不为空
+         if(!num1.equals("")&& !num2.equals("")){
+             n1 = Double.parseDouble(num1);
+             n2 = Double.parseDouble(num2);
+             switch (op){
+                 case "+" : r = n1+n2;break;
+                 case "-" : r = n1-n2;break;
+                 case "×" : r = n1*n2;break;
+                 case "÷" :
+                     if(n2 == 0)
+                         r=0;
+                     else r = n1/n2;break;
+                 default:r=0;
+             }
+             if (!num1.contains(".") && !num2.contains(".") && !op.equals("÷")) {
+                 int R = (int) r;
+                 String string = R + "";
+                 text.setText(string);
+             } else {
+                 String string = r + "";
+                 text.setText(string);
+             }
+         }
+         //只有第二个数为空，不用计算
+         else if (!num1.equals("") && num2.equals(""))
+             text.setText(str);
+         //第一个数为空
+         else if (num1.equals("") && !num2.equals("")){
+             n2 = Double.parseDouble(num2);
+             switch (op){
+                 case "+" : r = 0+n2;break;
+                 case "-" : r = 0-n2;break;
+                 case "×" : r = 0*n2;break;
+                 case "÷" : r = 0;break;
+                 default:r=0;
+             }
+             String string = r + "";
+             text.setText(string);
+         }
+        }
+        /*
+        sin,cos,tan
+         */
+        else if(str.contains("sin")||str.contains("cos")||str.contains("tan")){
+            op= str.substring(str.indexOf(" ")+1,str.indexOf(" ")+4);
+            num2 = str.substring(str.indexOf(" "+5));
+            n2 = Double.parseDouble(num2);
+            double result;
+            String string;
+            switch (op){
+                case "sin": result = (int)(Math.sin(n2)*100);
+                    string = result/100.0 + "";
+                    text.setText(string);
+                    break;
+                case "cos":
+                    result = (int)(Math.cos(n2)*100);
+                    string = result/100.0 + "";
+                    text.setText(string);
+                    break;
+                case "tan":
+                    result = (int) (Math.tan(n2)*100);
+                    string = result/100.0 + "";
+                    text.setText(string);
+                    break;
+                default:
+                    text.setText("错误");
+            }
+        }
     }
 }
