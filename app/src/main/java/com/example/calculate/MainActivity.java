@@ -1,5 +1,6 @@
 package com.example.calculate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Configuration;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         //获取屏幕方向
         int orientation=getResources().getConfiguration().orientation;
         Log.d("--------",""+orientation);
@@ -44,12 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_LANDSCAPE) {
-            // land donothing is ok
+            setContentView(R.layout.activity_main);
         } else if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_PORTRAIT) {
-            // port donothing is ok
+            setContentView(R.layout.activity_main);
         }
     }
 
