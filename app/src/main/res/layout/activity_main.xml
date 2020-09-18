@@ -218,7 +218,7 @@
         android:layout_below="@id/b_1"
         android:layout_marginTop="15dp"
         android:layout_alignEnd="@id/b_2"
-        android:layout_alignLeft="@id/b_1"
+        android:layout_alignStart="@id/b_1"
         android:text="@string/b0"
         android:textSize="30sp"
         android:background="#666666"

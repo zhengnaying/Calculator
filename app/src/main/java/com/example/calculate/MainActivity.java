@@ -8,13 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;
     private Button add, sub, div, mul, reset, cancel, percent, point, calculate;
-    private Button square, cube, cm,cm3, sin, cos, tan, log, ln, help, factorial, hex,dao,bin,dec,oct,left,right,sqrt,s;
+    private Button square, cube, cm,cm3, sin, cos, tan, log, ln, help, factorial,dao,left,right,sqrt,s;
 
     private String str = "0";
     private boolean clear_flag = false;
@@ -25,11 +24,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         //获取屏幕方向
         int orientation=getResources().getConfiguration().orientation;
         Log.d("--------",""+orientation);
         int mCurrentOrientation = getResources().getConfiguration().orientation;
-        if(mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT){
+        if(mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT)
+        {
             Log.i("INFO","portrait"); //竖屏
             initView_por();   //竖屏初始化
             initEvent_por();
@@ -45,12 +46,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_LANDSCAPE) {
+            // land donothing is ok
+        } else if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_PORTRAIT) {
+            // port donothing is ok
         }
     }
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         help = (Button) findViewById(R.id.b_help);
         s = (Button) findViewById(R.id.b_switch);
 
-        text = (TextView) findViewById(R.id.t1);
+
 
     }
     //横屏监听器
@@ -275,8 +274,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_lg:
             case R.id.b_left:
             case R.id.b_right:
-            case R.id.b_cm:
-            case R.id.b_cm3:
             case R.id.b_switch:
             case R.id.b_factory:
                 if (clear_flag){
@@ -286,6 +283,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 str+= " "+((Button)v).getText()+" ";
                 text.setText(str);
+                break;
+                /*
+                换算
+                 */
+            case R.id.b_cm:
+                if(str.length()!=0){
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(t/100);
+                }
+                else result = "0";
+                if(clear_flag){
+                    clear_flag=false;
+                    str="";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
+            case R.id.b_cm3:
+                if(str.length()!=0){
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(t/1000000);
+                }
+                else result = "0";
+                if(clear_flag){
+                    clear_flag=false;
+                    str="";
+                    text.setText(str);
+                }
+                text.setText(result);
                 break;
              /*
              倒数
@@ -369,11 +395,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              switch (op){
                  case "+" : r = 0+n2;break;
                  case "-" : r = 0-n2;break;
-                 case "×" : r = 0*n2;break;
+                 case "×" : r = 0;break;
                  case "÷" : r = 0;break;
                  default:r=0;
              }
              String string = r + "";
+             if(string.contains(".")){
+                 int t = (int)r;
+                 string = t+"";
+             }
              text.setText(string);
          }
         }
