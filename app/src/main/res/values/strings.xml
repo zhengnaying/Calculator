@@ -46,5 +46,11 @@
     <string name="b_switch">switch</string>
 
     <string name="TestView_name">0</string>
+    <string name="c">c</string>
+    <string name="d">d</string>
+    <string name="e">e</string>
+    <string name="f">f</string>
+    <string name="a">a</string>
+    <string name="b">b</string>
 
 </resources>

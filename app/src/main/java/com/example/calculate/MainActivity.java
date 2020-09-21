@@ -10,15 +10,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;
+    private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0;
     private Button add, sub, div, mul, reset, cancel, percent, point, calculate;
-    private Button square, cube, cm,cm3, sin, cos, tan, log, ln, help, factorial,dao,left,right,sqrt,s;
+    private Button square, cube, cm, cm3, sin, cos, tan, log, ln, help, factorial, dao, left, right, sqrt, s;
 
     private String str = "0";
+    final double pi = 3.1415926;
     private boolean clear_flag = false;
     String result;
     private TextView text;
@@ -29,32 +35,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
         //获取屏幕方向
-        int orientation=getResources().getConfiguration().orientation;
-        Log.d("--------",""+orientation);
+        int orientation = getResources().getConfiguration().orientation;
+        Log.d("--------", "" + orientation);
         int mCurrentOrientation = getResources().getConfiguration().orientation;
-        if(mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT)
-        {
-            Log.i("INFO","portrait"); //竖屏
+
+
+        if (mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.i("INFO", "portrait"); //竖屏
             initView_por();   //竖屏初始化
             initEvent_por();
-        }
-        else if(mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE){
-            Log.i("INFO","landscape");
+        } else if (mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.i("INFO", "landscape");
             initView_por();
             initView_land();
-            initEvent_por();
             initEvent_land();
+
+            initEvent_por();
         }
 
     }
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_main);
-        } else if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_PORTRAIT) {
-            setContentView(R.layout.activity_main);
-        }
-    }
+
 
     //横屏初始化组件
     private void initView_land() {
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         s = (Button) findViewById(R.id.b_switch);
 
 
-
     }
+
     //横屏监听器
     private void initEvent_land() {
         left.setOnClickListener(this);
@@ -125,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         text = (TextView) findViewById(R.id.t1);
 
+        Log.v("tag", text.toString());
+
     }
 
     //竖屏监听器
@@ -151,13 +153,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     *
      * @param v 点击事件
      */
     @Override
     public void onClick(View v) {
         str = text.getText().toString();
-        switch (v.getId()){
+        switch (v.getId()) {
             /*
             数字
              */
@@ -182,20 +183,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_sub:
             case R.id.b_mul:
             case R.id.b_div:
-                str += " "+((Button) v).getText()+" ";
+                str += ((Button) v).getText();
                 text.setText(str);
                 break;
              /*
              删除:若长度为1或0 直接清零；若长度大于1则删除最后一位
               */
             case R.id.b_DEL:
-                if(clear_flag){
+                if (clear_flag) {
                     clear_flag = false;
-                    str="";
+                    str = "";
                     text.setText(str);
                 }
-                if(str != null && !str.equals("")){
-                    text.setText(str.substring(0,str.length()-1));
+                if (str != null && !str.equals("")) {
+                    text.setText(str.substring(0, str.length() - 1));
                 }
                 break;
             /*
@@ -203,19 +204,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              */
             case R.id.b_C:
                 clear_flag = false;
-                str="";
+                str = "";
                 text.setText(str);
                 break;
              /*
              百分号
               */
             case R.id.b_per:
-                if(str.length()!=0){
-                    result = Double.toString((Double.parseDouble(str))/100.0);
+                if (str.length() != 0) {
+                    result = Double.toString((Double.parseDouble(str)) / 100.0);
                     clear_flag = false;
-                }
-                else {
-                    result="error!";
+                } else {
+                    result = "error!";
                     return;
                 }
                 text.setText(result);
@@ -224,18 +224,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              等号
               */
             case R.id.b_equals:
+                str += ((Button) v).getText();
                 getResult();
                 break;
             /*
             平方
              */
-            case R.id.square:
-                if(str.length()!=0){
+            case R.id.b_square:
+                if (str.length() != 0) {
                     double t = Double.parseDouble(str);
-                    result = Double.toString(t*t);
-                }
-                else {
-                    result="error!";
+                    result = Double.toString(t * t);
+                } else {
+                    result = "error!";
                     return;
                 }
                 text.setText(result);
@@ -244,12 +244,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             立方
              */
             case R.id.b_cube:
-                if(str.length()!=0){
+                if (str.length() != 0) {
                     double t = Double.parseDouble(str);
-                    result = Double.toString(t*t*t);
-                }
-                else {
-                    result="error!";
+                    result = Double.toString(t * t * t);
+                } else {
+                    result = "error!";
                     return;
                 }
                 text.setText(result);
@@ -258,14 +257,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              开方
               */
             case R.id.b_sqrt:
-                if(str.length()!=0){
+                if (str.length() != 0) {
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.sqrt(t));
-                }
-                else result = "0";
-                if(clear_flag){
-                    clear_flag=false;
-                    str="";
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
                     text.setText(str);
                 }
                 text.setText(result);
@@ -279,39 +277,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_right:
             case R.id.b_switch:
             case R.id.b_factory:
-                if (clear_flag){
+                if (clear_flag) {
                     clear_flag = false;
-                    str="";
+                    str = "";
                     text.setText(str);
                 }
-                str+= " "+((Button)v).getText()+" ";
+                str += ((Button) v).getText();
                 text.setText(str);
                 break;
                 /*
                 换算
                  */
             case R.id.b_cm:
-                if(str.length()!=0){
+                if (str.length() != 0) {
                     double t = Double.parseDouble(str);
-                    result = Double.toString(t/100);
-                }
-                else result = "0";
-                if(clear_flag){
-                    clear_flag=false;
-                    str="";
+                    result = Double.toString(t / 100);
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
                     text.setText(str);
                 }
                 text.setText(result);
                 break;
             case R.id.b_cm3:
-                if(str.length()!=0){
+                if (str.length() != 0) {
                     double t = Double.parseDouble(str);
-                    result = Double.toString(t/1000000);
-                }
-                else result = "0";
-                if(clear_flag){
-                    clear_flag=false;
-                    str="";
+                    result = Double.toString(t / 1000000);
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
                     text.setText(str);
                 }
                 text.setText(result);
@@ -320,13 +316,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              倒数
               */
             case R.id.b_dao:
-                if(str.length()!=0){
-                    double t = 1/Double.parseDouble(str);
+                if (str.length() != 0) {
+                    double t = 1 / Double.parseDouble(str);
                     t = (double) Math.round(t * 100) / 100;  //保留两位小数
                     result = Double.toString(t);
-                }
-                else {
-                    result="error!";
+                } else {
+                    result = "error!";
                 }
                 if (clear_flag) {
                     clear_flag = false;
@@ -340,103 +335,189 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getResult() {
-        String num1,num2;
-        String op;
-
-        double n1,n2;
-        double r;
         /*
         若存在符号则进行运算，没有则直接返回；
          */
-        if(str == null || str.equals(""))
+        if (str == null || str.equals(""))
             return;
-        if(!str.contains(" "))
-            return;
-        clear_flag=true;
-
-        /*
-        加减乘除
-         */
-        if(str.contains("+")|| str.contains("-")||str.contains("×")||str.contains("÷")){
-            num1 = str.substring(0,str.indexOf(" "));
-            op = str.substring(str.indexOf(" ")+1,str.indexOf(" ")+2);
-            num2 = str.substring(str.indexOf(" ")+3);
-            //都不为空
-         if(!num1.equals("")&& !num2.equals("")){
-             n1 = Double.parseDouble(num1);
-             n2 = Double.parseDouble(num2);
-             switch (op){
-                 case "+" : r = n1+n2;break;
-                 case "-" : r = n1-n2;break;
-                 case "×" : r = n1*n2;break;
-                 case "÷" :
-                     if(n2 == 0)
-                         r=0;
-                     else r = n1/n2;break;
-                 default:r=0;
-             }
-             if (!num1.contains(".") && !num2.contains(".") && !op.equals("÷")) {
-                 int R = (int) r;
-                 String string = R + "";
-                 text.setText(string);
-             } else if(n1%n2==0) {
-                 int R = (int) r;
-                 String string = R + "";
-                 text.setText(string);
-             }
-             else {
-                 String string = r + "";
-                 text.setText(string);
-             }
-         }
-         //只有第二个数为空，不用计算
-         else if (!num1.equals("") && num2.equals(""))
-             text.setText(str);
-         //第一个数为空
-         else if (num1.equals("") && !num2.equals("")){
-             n2 = Double.parseDouble(num2);
-             switch (op){
-                 case "+" : r = 0+n2;break;
-                 case "-" : r = 0-n2;break;
-                 case "×" : r = 0;break;
-                 case "÷" : r = 0;break;
-                 default:r=0;
-             }
-             String string = r + "";
-             if(string.contains(".")){
-                 int t = (int)r;
-                 string = t+"";
-             }
-             text.setText(string);
-         }
+        if ('-' == str.charAt(0)) {// 开头为负数，如-1，改为0-1
+            str = 0 + str;
         }
-        /*
-        sin,cos,tan
-         */
-        else if(str.contains("sin")||str.contains("cos")||str.contains("tan")){
-            op= str.substring(str.indexOf(" ")+1,str.indexOf(" ")+4);
-            num2 = str.substring(str.indexOf(" "+5));
-            n2 = Double.parseDouble(num2);
-            double result;
-            String string;
-            switch (op){
-                case "sin": result = (int)(Math.sin(n2)*100);
-                    string = result/100.0 + "";
-                    text.setText(string);
-                    break;
-                case "cos":
-                    result = (int)(Math.cos(n2)*100);
-                    string = result/100.0 + "";
-                    text.setText(string);
-                    break;
-                case "tan":
-                    result = (int) (Math.tan(n2)*100);
-                    string = result/100.0 + "";
-                    text.setText(string);
-                    break;
-                default:
-                    text.setText("错误");
+        clear_flag = true;
+        // 校验格式
+        if (!MyUtils.checkFormat(str)) {
+            text.setText("表达式错误！");
+        }
+        // 处理表达式，改为标准表达式
+        str = MyUtils.change2StandardFormat(str);
+        // 拆分字符和数字
+        String[] nums = str.split("[^.0-9]");
+        ArrayList numList = new ArrayList();
+        for (int i = 0; i < nums.length; i++) {
+            if (!"".equals(nums[i])) {
+                numList.add(Double.parseDouble(nums[i]));
             }
         }
+        String symStr = str.replaceAll("[.0-9]", "");
+
+        doCalculate(symStr, numList);
+    }
+
+    private void doCalculate(String symStr, ArrayList numList) {
+        LinkedList<Character> symStack = new LinkedList<>();// 符号栈
+        LinkedList<Double> numStack = new LinkedList<>();// 数字栈
+        double result = 0;
+        int i = 0;// numList的标志位
+        int j = 0;// symStr的标志位
+        char sym;// 符号
+        double num1, num2;// 符号前后两个数
+        while (symStack.isEmpty() || !(symStack.getLast() == '='&& symStr.charAt(j) == '=')){
+            if (symStack.isEmpty()) {
+                symStack.add('=');
+                numStack.add((Double) numList.get(i++));
+            }
+            if (MyUtils.symLvMap.get(symStr.charAt(j)) > MyUtils.symLvMap.get(symStack.getLast())) {// 比较符号优先级，若当前符号优先级大于前一个则压栈
+                if (symStr.charAt(j) == '(') {
+                    symStack.add(symStr.charAt(j++));
+                    continue;
+                }
+                numStack.add((Double) numList.get(i++));
+                symStack.add(symStr.charAt(j++));
+            }else {// 当前符号优先级小于等于前一个符号的优先级
+                if (symStr.charAt(j) == ')' && symStack.getLast() == '(') {// 若（）之间没有符号，则“（”出栈
+                    j++;
+                    symStack.removeLast();
+                    continue;
+                }
+                if (symStack.getLast() == '(') {// “（”直接压栈
+                    numStack.add((Double) numList.get(i++));
+                    symStack.add(symStr.charAt(j++));
+                    continue;
+                }
+                num2 = numStack.removeLast();
+                num1 = numStack.removeLast();
+                sym = symStack.removeLast();
+                switch (sym) {
+                    case '+':
+                        numStack.add(num1+num2);
+                        break;
+                    case '-':
+                        numStack.add(num1-num2);
+                        break;
+                    case '×':
+                        numStack.add(num1*num2);
+                        break;
+                    case '÷':
+                        if (num2 == 0) {// 除数为0
+                            text.setText("错误");
+                            return ;
+                        }
+                        numStack.add(num1/num2);
+                        break;
+                }
+            }
+        }
+        String string =  numStack.removeLast() + "";
+        text.setText(string);
     }
 }
+
+
+class MyUtils {
+
+    public static final Map<Character, Integer> symLvMap = new HashMap<Character, Integer>();// 符号优先级map
+
+    static {
+        symLvMap.put('=', 0);
+        symLvMap.put('-', 1);
+        symLvMap.put('+', 1);
+        symLvMap.put('×', 2);
+        symLvMap.put('÷', 2);
+        symLvMap.put('(', 3);
+        symLvMap.put(')', 1);
+
+    }
+    /*
+检查表达式格式是否正确
+ */
+    public static boolean checkFormat(String str){
+        // 校验开头是否为数字或者“(”
+        if (!(isCharNum(str.charAt(0)) || str.charAt(0) == '(')) {
+            return false;
+        }
+        for(int i=1;i<str.length()-1;i++) {
+            char c;
+            c=str.charAt(i);
+            if (!(isCharNum(c))) {
+                if (c == '-' || c == '+' || c == '×' || c == '÷') {
+                    if (c == '-' && str.charAt(i - 1) == '(') {// 1*(-2+3)的情况
+                        continue;
+                    }
+                    if (!(isCharNum(str.charAt(i - 1)) || str.charAt(i - 1) == ')')) {// 若符号前一个不是数字或者“）”时
+                        return false;
+                    }
+                }
+                if (c == '.') {
+                    if (!isCharNum(str.charAt(i - 1)) || !isCharNum(str.charAt(i + 1))) {// 校验“.”的前后是否为数字
+                        return false;
+                    }
+                }
+            }
+        }
+        return isBracketCouple(str);// 校验括号是否配对
+    }
+/*
+处理表达式格式为标准格式，如2(-1+2)(3+4)改为2*(0-1+2)*(3+4)
+ */
+    public static String change2StandardFormat(String str) {
+        StringBuilder sb = new StringBuilder();
+        char c;
+        for (int i = 0; i < str.length(); i++) {
+            c = str.charAt(i);
+            if (i != 0 && c == '(' && (isCharNum(str.charAt(i - 1)) || str.charAt(i - 1) == ')')) {
+                sb.append("×(");
+                continue;
+            }
+            if (c == '-' && str.charAt(i - 1) == '(') {
+                sb.append("0-");
+                continue;
+            }
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
+/*
+判断括号是否配对
+ */
+    private static boolean isBracketCouple(String str) {
+        LinkedList<Character> stack = new LinkedList<>();
+        for (char c : str.toCharArray()) {
+            if (c == '(') {
+                stack.add(c);
+            } else if (c == ')') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                stack.removeLast();
+            }
+        }
+        if (stack.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    /*
+    判断是否为数字
+     */
+    public static boolean isCharNum(Character c) {
+    if (c >= '0' && c <= '9') {
+        return true;
+    }
+    return false;
+    }
+}
+
