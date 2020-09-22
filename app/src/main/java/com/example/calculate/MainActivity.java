@@ -3,6 +3,7 @@ package com.example.calculate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case R.id.jinzhi:
                 Toast.makeText(this, "进制转换", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,MainActivity_jinzhi.class);
+                startActivity(intent);
                 break;
             case R.id.danwei:
                 Toast.makeText(this, "单位转换", Toast.LENGTH_LONG).show();

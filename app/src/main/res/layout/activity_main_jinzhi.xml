@@ -10,8 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:textColor="#ffffff"
     android:background="#000000"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity_jinzhi">
 
     <TextView
         android:id="@+id/t2"
@@ -36,14 +35,14 @@
 
 
     <Spinner
-    android:id="@+id/s1"
-    android:layout_width="107dp"
-    android:layout_height="51dp"
-    android:layout_below="@id/t2"
-    android:layout_marginTop="27dp"
-    android:background="#CCCCCC"
-    android:textAlignment="center"
-    android:entries="@array/spinnerName" />
+        android:id="@+id/s1"
+        android:layout_width="107dp"
+        android:layout_height="51dp"
+        android:layout_below="@id/t2"
+        android:layout_marginTop="27dp"
+        android:background="#CCCCCC"
+        android:textAlignment="center"
+        android:entries="@array/spinnerName" />
 
     <Spinner
         android:id="@+id/s2"
@@ -87,7 +86,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/b_DEL"
-        android:background="#CCCCCC"
+        android:background="#FF9900"
         android:text="@string/a"
         android:textSize="30sp" />
 
@@ -257,14 +256,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_point"
-        android:text="@string/b_point"
+        android:id="@+id/b_back"
+        android:text="@string/back"
         android:textSize="30sp"
         android:layout_toEndOf="@id/b_0"
         android:layout_alignTop="@id/b_0"
         android:layout_marginStart="10dp"
-        android:background="#666666"
-        android:textColor="#ffffff"/>
+        android:background="#FF9900"
+        android:textColor="#000000"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -272,7 +271,7 @@
         android:id="@+id/b_f"
         android:text="@string/f"
         android:textSize="30sp"
-        android:layout_toEndOf="@id/b_point"
+        android:layout_toEndOf="@id/b_back"
         android:layout_alignTop="@id/b_0"
         android:layout_marginStart="10dp"
         android:background="#FF9900"/>

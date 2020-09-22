@@ -52,5 +52,6 @@
     <string name="f">f</string>
     <string name="a">a</string>
     <string name="b">b</string>
+    <string name="back">返回</string>
 
 </resources>
