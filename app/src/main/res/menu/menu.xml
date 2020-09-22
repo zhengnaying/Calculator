@@ -6,6 +6,4 @@
         android:id="@+id/jinzhi"
         android:title="进制转换" />
 
-
-
 </menu>

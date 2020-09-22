@@ -3,6 +3,8 @@ package com.example.calculate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -366,6 +368,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 text.setText(result);
                 break;
+            case R.id.b_help:
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                        .setTitle("HELP")
+                        .setMessage("这是帮助按钮")
+                        .create();
+                dialog.show();
+                break;
+
         }
 
     }
