@@ -16,24 +16,27 @@
 
     <TextView
         android:id="@+id/t2"
-        android:layout_width="110dp"
+        android:layout_width="239dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/b_a"
-        android:layout_marginStart="-74dp"
+        android:layout_marginStart="-142dp"
         android:hint="@string/TestView_name"
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textColorHint="#ffffff"
         android:textSize="50sp" />
 
     <TextView
         android:id="@+id/t3"
-        android:layout_width="110dp"
+        android:layout_width="241dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/t2"
-        android:layout_marginStart="300dp"
         android:layout_alignStart="@+id/t2"
+        android:layout_alignTop="@+id/t2"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="0dp"
         android:hint="@string/TestView_name"
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textColorHint="#ffffff"
         android:textSize="50sp" />
 
@@ -66,7 +69,7 @@
         android:layout_width="58dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/t2"
-        android:layout_marginStart="178dp"
+        android:layout_marginStart="250dp"
         android:layout_marginTop="30dp"
         android:text="转换" />
 

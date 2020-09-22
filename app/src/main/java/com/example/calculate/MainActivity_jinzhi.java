@@ -65,16 +65,39 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
                 startActivity(intent);
                 break;
             case R.id.change:
-                Double n1 = Double.parseDouble(str1);
+                getResult(str1);
+                break;
 
         }
 
 
     }
-    private void testSpinner(){
 
-
+    private void getResult(String str1) {
+        int n1 = (int)Double.parseDouble(str1);
+        String n2="0";
+        s1_selected = s1.getSelectedItem().toString();
+        s2_selected = s2.getSelectedItem().toString();
+        while(s1_selected.equals("十进制")){
+            switch (s2_selected){
+                case "二进制":
+                    n2 = Integer.toBinaryString(n1);
+                    break;
+                case "八进制":
+                    n2 = Integer.toOctalString(n1);
+                    break;
+                case "十六进制":
+                    n2 = Integer.toHexString(n1);
+                    break;
+                case "十进制":
+                    n2 = String.valueOf(n1);
+                    break;
+                default:break;
+            }
+            text2.setText(n2);
+        }
     }
+
     private void initView() {
         //初始化按钮
         b0 = (Button) findViewById(R.id.b_0);
@@ -127,14 +150,5 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         cancel.setOnClickListener(this);
         reset.setOnClickListener(this);
         b_change.setOnClickListener(this);
-        s1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                s1_selected = s1.getSelectedItem().toString();
-
-
-            }
-        });
-
     }
 }
