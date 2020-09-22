@@ -269,14 +269,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text.setText(result);
                 break;
             case R.id.b_sin:
+                if (str.length() != 0) {
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(Math.sin(pi/180 * t));
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
             case R.id.b_cos:
+                if (str.length() != 0) {
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(Math.cos(pi/180 * t));
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
             case R.id.b_tan:
+                if (str.length() != 0) {
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(Math.tan(pi/180 * t));
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
             case R.id.b_ln:
+                if (str.length() != 0) {
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(Math.log(t));
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
             case R.id.b_lg:
+                if (str.length() != 0) {
+                    double t = Double.parseDouble(str);
+                    result = Double.toString(Math.log10(t));
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
             case R.id.b_left:
             case R.id.b_right:
-            case R.id.b_switch:
-            case R.id.b_factory:
                 if (clear_flag) {
                     clear_flag = false;
                     str = "";
@@ -285,6 +338,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 str += ((Button) v).getText();
                 text.setText(str);
                 break;
+            case R.id.b_switch:
+                break;
+            case R.id.b_factory:
+                if (str.length() != 0) {
+                    double t = Double.parseDouble(str);
+                    double a=1;
+                    for(int i=0;(t-i)>0 ;i++){
+                        a*=(t-i);
+                    }
+                    result = Double.toString(a);
+                } else result = "0";
+                if (clear_flag) {
+                    clear_flag = false;
+                    str = "";
+                    text.setText(str);
+                }
+                text.setText(result);
+                break;
+
                 /*
                 换算
                  */
