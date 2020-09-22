@@ -49,7 +49,7 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         b_back = (Button) findViewById(R.id.b_back);
 
         TextView text1 = (TextView) findViewById(R.id.t2);
-        TextView text2 = (TextView) findViewById(R.id.t3);
+        TextView text2 = (TextView) findViewById(R.id.t3) ;
     }
     //竖屏监听器
     private void initEvent() {
