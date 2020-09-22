@@ -16,9 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String str = "0";
     final double pi = 3.1415926;
-    private boolean clear_flag = false;
     String result;
     private TextView text;
 
@@ -213,15 +210,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 str += ((Button) v).getText();
                 text.setText(str);
                 break;
-             /*
-             删除:若长度为1或0 直接清零；若长度大于1则删除最后一位
-              */
             case R.id.b_DEL:
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
+
                 if (str != null && !str.equals("")) {
                     text.setText(str.substring(0, str.length() - 1));
                 }
@@ -230,7 +220,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             清除
              */
             case R.id.b_C:
-                clear_flag = false;
                 str = "";
                 text.setText(str);
                 break;
@@ -240,7 +229,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_per:
                 if (str.length() != 0) {
                     result = Double.toString((Double.parseDouble(str)) / 100.0);
-                    clear_flag = false;
                 } else {
                     result = "error!";
                     return;
@@ -288,11 +276,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.sqrt(t));
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
             case R.id.b_sin:
@@ -300,11 +283,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.sin(pi/180 * t));
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
             case R.id.b_cos:
@@ -312,11 +290,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.cos(pi/180 * t));
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
             case R.id.b_tan:
@@ -324,11 +297,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.tan(pi/180 * t));
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
             case R.id.b_ln:
@@ -336,11 +304,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.log(t));
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
             case R.id.b_lg:
@@ -348,20 +311,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(Math.log10(t));
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
             case R.id.b_left:
             case R.id.b_right:
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 str += ((Button) v).getText();
                 text.setText(str);
                 break;
@@ -376,11 +329,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     result = Double.toString(a);
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
                 text.setText(result);
                 break;
 
@@ -392,11 +340,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(t / 100);
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
+
                 text.setText(result);
                 break;
             case R.id.b_cm3:
@@ -404,11 +348,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double t = Double.parseDouble(str);
                     result = Double.toString(t / 1000000);
                 } else result = "0";
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText(str);
-                }
+
                 text.setText(result);
                 break;
              /*
@@ -422,11 +362,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     result = "error!";
                 }
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    text.setText("");
-                }
+
                 text.setText(result);
                 break;
         }
@@ -442,7 +378,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if ('-' == str.charAt(0)) {// 开头为负数，如-1，改为0-1
             str = 0 + str;
         }
-        clear_flag = true;
+
         // 校验格式
         if (!MyUtils.checkFormat(str)) {
             text.setText("表达式错误！");
