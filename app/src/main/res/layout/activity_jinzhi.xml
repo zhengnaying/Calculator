@@ -8,18 +8,62 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:textColor="#ffffff"
     android:background="#000000"
     tools:context=".MainActivity"
     >
+
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/b_C"
+        android:layout_marginTop="70dp"
+        android:hint="@string/TestView_name"
+        android:textColorHint="#ffffff"
+        android:textAlignment="center"
+        android:textSize="80sp" />
+    <TextView
+        android:id="@+id/t3"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/t2"
+        android:layout_alignStart="@id/b_a"
+        android:hint="@string/TestView_name"
+        android:textColorHint="#ffffff"
+        android:textAlignment="center"
+        android:textSize="80sp" />
+
+
+    <Spinner
+    android:id="@+id/s1"
+    android:layout_width="107dp"
+    android:layout_height="51dp"
+    android:layout_below="@id/t2"
+    android:layout_marginTop="27dp"
+    android:background="#CCCCCC"
+    android:textAlignment="center"
+    android:entries="@array/spinnerName" />
+
+    <Spinner
+        android:id="@+id/s2"
+        android:layout_width="107dp"
+        android:layout_height="51dp"
+        android:layout_alignStart="@+id/t3"
+        android:layout_below="@id/t3"
+        android:layout_marginTop="27dp"
+        android:background="#CCCCCC"
+        android:textAlignment="center"
+        android:entries="@array/spinnerName" />
 
     <Button
         android:id="@+id/b_C"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/t1"
+        android:layout_below="@+id/s1"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="#CCCCCC"
         android:text="@string/b_C"
         android:textSize="30sp" />
@@ -36,7 +80,7 @@
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/b_per"
+        android:id="@+id/b_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/b_C"
@@ -44,18 +88,18 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/b_DEL"
         android:background="#CCCCCC"
-        android:text="@string/b_per"
+        android:text="@string/a"
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/b_div"
+        android:id="@+id/b_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/b_per"
+        android:layout_alignTop="@+id/b_a"
         android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/b_per"
+        android:layout_toEndOf="@+id/b_a"
         android:background="#FF9900"
-        android:text="@string/b_div"
+        android:text="@string/b"
         android:textSize="35sp" />
 
     <Button
@@ -96,8 +140,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_mul"
-        android:text="@string/b_mul"
+        android:id="@+id/b_c"
+        android:text="@string/c"
         android:textSize="30sp"
         android:layout_toEndOf="@id/b_9"
         android:layout_alignTop="@id/b_9"
@@ -143,8 +187,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_sub"
-        android:text="@string/b_sub"
+        android:id="@+id/b_d"
+        android:text="@string/d"
         android:textSize="30sp"
         android:layout_toEndOf="@id/b_6"
         android:layout_alignTop="@id/b_6"
@@ -189,8 +233,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_add"
-        android:text="@string/b_add"
+        android:id="@+id/b_e"
+        android:text="@string/e"
         android:textSize="30sp"
         android:layout_toEndOf="@id/b_3"
         android:layout_alignTop="@id/b_3"
@@ -225,8 +269,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_equals"
-        android:text="@string/b_equals"
+        android:id="@+id/b_f"
+        android:text="@string/f"
         android:textSize="30sp"
         android:layout_toEndOf="@id/b_point"
         android:layout_alignTop="@id/b_0"
