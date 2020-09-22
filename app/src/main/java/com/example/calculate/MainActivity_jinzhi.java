@@ -2,17 +2,22 @@ package com.example.calculate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnClickListener  {
 
-    private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,b_a,b_b,b_c,b_d,b_e,b_f,b_back,cancel,reset;
+    private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,b_a,b_b,b_c,b_d,b_e,b_f,b_back,cancel,reset,b_change;
     private String str1 = "0",str2 = "0";
     TextView text1,text2;
+    Spinner s1,s2;
+    String s1_selected,s2_selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,6 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
             case R.id.b_7:
             case R.id.b_8:
             case R.id.b_9:
-            case R.id.b_point:
                 str1 += ((Button) v).getText();
                 text1.setText(str1);
                 break;
@@ -56,7 +60,18 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
                 str1 = "";
                 text1.setText(str1);
                 break;
+            case R.id.b_return:
+                Intent intent = new Intent(MainActivity_jinzhi.this,MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.change:
+                Double n1 = Double.parseDouble(str1);
+
         }
+
+
+    }
+    private void testSpinner(){
 
 
     }
@@ -81,9 +96,14 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         reset = (Button) findViewById(R.id.b_C);
         cancel = (Button) findViewById(R.id.b_DEL);
         b_back = (Button) findViewById(R.id.b_return);
+        b_change = (Button) findViewById(R.id.change);
 
         text1 = (TextView) findViewById(R.id.t2);
         text2 = (TextView) findViewById(R.id.t3) ;
+        s1 =(Spinner) findViewById(R.id.s1);
+        s2 = (Spinner) findViewById(R.id.s2);
+        s1.setSelection(0);
+        s2.setSelection(2);
     }
     //监听器
     private void initEvent() {
@@ -106,6 +126,15 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         b_back.setOnClickListener(this);
         cancel.setOnClickListener(this);
         reset.setOnClickListener(this);
+        b_change.setOnClickListener(this);
+        s1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                s1_selected = s1.getSelectedItem().toString();
+
+
+            }
+        });
 
     }
 }
