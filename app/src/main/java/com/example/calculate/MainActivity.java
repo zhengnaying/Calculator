@@ -73,10 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this,MainActivity_jinzhi.class);
                 startActivity(intent);
                 break;
-            case R.id.danwei:
-                Toast.makeText(this, "单位转换", Toast.LENGTH_LONG).show();
-                break;
-
             default:
                 break;
         }

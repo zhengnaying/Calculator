@@ -44,6 +44,12 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
             case R.id.b_7:
             case R.id.b_8:
             case R.id.b_9:
+            case R.id.b_a:
+            case R.id.b_b:
+            case R.id.b_c:
+            case R.id.b_d:
+            case R.id.b_e:
+            case R.id.b_f:
                 str1 += ((Button) v).getText();
                 text1.setText(str1);
                 break;
@@ -74,11 +80,27 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
     }
 
     private void getResult(String str1) {
-        int n1 = (int)Double.parseDouble(str1);
+        int n1 = 0;
         String n2="0";
         s1_selected = s1.getSelectedItem().toString();
         s2_selected = s2.getSelectedItem().toString();
-        while(s1_selected.equals("十进制")){
+        if(s1_selected.equals("二进制")||s1_selected.equals("八进制")||s1_selected.equals("十六进制")){
+            switch (s1_selected){
+                case "二进制":
+                    n1 = Integer.parseInt(str1,2);
+                    break;
+                case "八进制":
+                    n1 = Integer.parseInt(str1,8);
+                    break;
+                case"十六进制":
+                    n1 = Integer.parseInt(str1,16);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        else n1 = (int)Double.parseDouble(str1);
             switch (s2_selected){
                 case "二进制":
                     n2 = Integer.toBinaryString(n1);
@@ -95,7 +117,9 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
                 default:break;
             }
             text2.setText(n2);
-        }
+
+
+
     }
 
     private void initView() {
