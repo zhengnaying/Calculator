@@ -68,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/s1"
         android:layout_marginStart="163dp"
+        android:layout_marginTop="0dp"
         android:text="转换" />
 
     <Button
