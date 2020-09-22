@@ -12,6 +12,7 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
 
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,b_a,b_b,b_c,b_d,b_e,b_f,b_back,cancel,reset;
     private String str1 = "0",str2 = "0";
+    TextView text1,text2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,38 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
 
     @Override
     public void onClick(View v) {
+        str1 = text1.getText().toString();
+        str2 = text2.getText().toString();
+        switch (v.getId()){
+            case R.id.b_0:
+            case R.id.b_1:
+            case R.id.b_2:
+            case R.id.b_3:
+            case R.id.b_4:
+            case R.id.b_5:
+            case R.id.b_6:
+            case R.id.b_7:
+            case R.id.b_8:
+            case R.id.b_9:
+            case R.id.b_point:
+                str1 += ((Button) v).getText();
+                text1.setText(str1);
+                break;
+            case R.id.b_DEL:
+
+                if (str1 != null && !str1.equals("")) {
+                    text1.setText(str1.substring(0, str1.length() - 1));
+                }
+                break;
+            /*
+            清除
+             */
+            case R.id.b_C:
+                str1 = "";
+                text1.setText(str1);
+                break;
+        }
+
 
     }
     private void initView() {
@@ -49,8 +82,8 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         cancel = (Button) findViewById(R.id.b_DEL);
         b_back = (Button) findViewById(R.id.b_return);
 
-        TextView text1 = (TextView) findViewById(R.id.t2);
-        TextView text2 = (TextView) findViewById(R.id.t3) ;
+        text1 = (TextView) findViewById(R.id.t2);
+        text2 = (TextView) findViewById(R.id.t3) ;
     }
     //监听器
     private void initEvent() {

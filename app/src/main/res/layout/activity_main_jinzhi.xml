@@ -22,17 +22,20 @@
         android:textColorHint="#ffffff"
         android:textAlignment="center"
         android:textSize="80sp" />
+
+
     <TextView
         android:id="@+id/t3"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/t2"
         android:layout_alignStart="@id/b_a"
+        android:layout_alignTop="@+id/t2"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="3dp"
         android:hint="@string/TestView_name"
-        android:textColorHint="#ffffff"
         android:textAlignment="center"
+        android:textColorHint="#ffffff"
         android:textSize="80sp" />
-
 
     <Spinner
         android:id="@+id/s1"
@@ -54,6 +57,15 @@
         android:background="#CCCCCC"
         android:textAlignment="center"
         android:entries="@array/spinnerName" />
+
+    <Button
+        android:id="@+id/change"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/t2"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="100dp"
+        android:text="转换"/>
 
     <Button
         android:id="@+id/b_C"
