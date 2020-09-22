@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         //获取屏幕方向
         int orientation = getResources().getConfiguration().orientation;
         Log.d("--------", "" + orientation);
@@ -52,6 +54,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             initEvent_por();
         }
+
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // 这条表示加载菜单文件，第一个参数表示通过那个资源文件来创建菜单
+        // 第二个表示将菜单传入那个对象中。这里我们用Menu传入menu
+        // 这条语句一般系统帮我们创建好
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    // 菜单的监听方法
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.jinzhi:
+                Toast.makeText(this, "进制转换", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.danwei:
+                Toast.makeText(this, "单位转换", Toast.LENGTH_LONG).show();
+                break;
+
+            default:
+                break;
+        }
+        return true;
 
     }
 

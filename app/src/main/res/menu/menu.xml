@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.calculate.MainActivity">
+    <item
+        android:id="@+id/jinzhi"
+        android:title="进制转换"
+        ></item>
+
+    <item
+        android:id="@+id/danwei"
+        android:title="单位转换"
+        ></item>
+
+
+</menu>
