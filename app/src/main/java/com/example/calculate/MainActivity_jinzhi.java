@@ -17,8 +17,9 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_jinzhi);
-        initEvent();
         initView();
+        initEvent();
+
 
     }
 
@@ -27,7 +28,7 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
 
     }
     private void initView() {
-        //初始化数字按钮
+        //初始化按钮
         b0 = (Button) findViewById(R.id.b_0);
         b1 = (Button) findViewById(R.id.b_1);
         b2 = (Button) findViewById(R.id.b_2);
@@ -46,12 +47,12 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         b_f= (Button) findViewById(R.id.b_f);
         reset = (Button) findViewById(R.id.b_C);
         cancel = (Button) findViewById(R.id.b_DEL);
-        b_back = (Button) findViewById(R.id.b_back);
+        b_back = (Button) findViewById(R.id.b_return);
 
         TextView text1 = (TextView) findViewById(R.id.t2);
         TextView text2 = (TextView) findViewById(R.id.t3) ;
     }
-    //竖屏监听器
+    //监听器
     private void initEvent() {
         b0.setOnClickListener(this);
         b1.setOnClickListener(this);
@@ -72,5 +73,6 @@ public class MainActivity_jinzhi extends AppCompatActivity  implements View.OnCl
         b_back.setOnClickListener(this);
         cancel.setOnClickListener(this);
         reset.setOnClickListener(this);
+
     }
 }

@@ -13,6 +13,7 @@
     tools:context=".MainActivity_jinzhi"
     >
 
+
     <TextView
         android:id="@+id/t2"
         android:layout_width="110dp"
@@ -22,43 +23,43 @@
         android:hint="@string/TestView_name"
         android:textAlignment="center"
         android:textColorHint="#ffffff"
-        android:textSize="80sp" />
-
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/t3"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/b_d"
         android:layout_alignTop="@+id/t2"
-        android:layout_marginStart="-88dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="300dp"
+        android:layout_alignStart="@+id/t2"
         android:hint="@string/TestView_name"
         android:textAlignment="center"
         android:textColorHint="#ffffff"
-        android:textSize="80sp" />
+        android:textSize="50sp" />
 
     <Spinner
         android:id="@+id/s1"
-        android:layout_width="107dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
         android:layout_below="@id/t2"
-        android:layout_marginTop="27dp"
         android:layout_alignStart="@+id/t2"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
         android:background="#CCCCCC"
-        android:textAlignment="center"
-        android:entries="@array/spinnerName" />
+        android:entries="@array/spinnerName"
+        android:textAlignment="center" />
 
     <Spinner
         android:id="@+id/s2"
-        android:layout_width="107dp"
-        android:layout_height="51dp"
-        android:layout_alignStart="@+id/t3"
+        android:layout_width="91dp"
+        android:layout_height="44dp"
         android:layout_below="@id/t3"
-        android:layout_marginTop="27dp"
+        android:layout_alignStart="@+id/t3"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="16dp"
         android:background="#CCCCCC"
-        android:textAlignment="center"
-        android:entries="@array/spinnerName" />
+        android:entries="@array/spinnerName"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/b_C"

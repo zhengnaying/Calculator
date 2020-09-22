@@ -256,7 +256,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_back"
+        android:id="@+id/b_return"
         android:text="@string/back"
         android:textSize="30sp"
         android:layout_toEndOf="@id/b_0"
@@ -271,7 +271,7 @@
         android:id="@+id/b_f"
         android:text="@string/f"
         android:textSize="30sp"
-        android:layout_toEndOf="@id/b_back"
+        android:layout_toEndOf="@id/b_return"
         android:layout_alignTop="@id/b_0"
         android:layout_marginStart="10dp"
         android:background="#FF9900"/>

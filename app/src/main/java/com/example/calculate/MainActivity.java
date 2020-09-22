@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // 菜单的监听方法
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int mCurrentOrientation = getResources().getConfiguration().orientation;
+
 
         switch (item.getItemId()) {
             case R.id.jinzhi:
