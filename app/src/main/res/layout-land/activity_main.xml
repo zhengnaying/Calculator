@@ -14,7 +14,6 @@
         android:layout_width="681dp"
         android:layout_height="0dip"
         android:layout_weight="0.82"
-        android:background="@drawable/background"
         android:gravity="end|bottom"
         android:hint="@string/TestView_name"
         android:textColor="#ffffff"
